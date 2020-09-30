@@ -1,7 +1,12 @@
   .question-container {
     text-align: center;
+    display: none;
     background-color: rgb(170, 170, 170);
     padding: 50px;
+  }
+  .container {
+    text-align: center;
+    margin-top: 25px;
   }
   body {
     background-color: rgb(100, 100, 100);
@@ -23,11 +28,13 @@
   .rules {
     text-align: center;
     color: white;
-    text-decoration: underline;
   }
   li {
     list-style-position: inside;
     padding: 10px;
+  }
+  li:hover {
+    color:green;
   }
   .timer {
     text-align: center;

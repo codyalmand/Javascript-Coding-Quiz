@@ -11,27 +11,28 @@
     <h1 class="quizTitle" id="quizTitle"> Javascript Code Quiz
         <br>
     </h1>
-        <div class="rules">
-            Click the answers to following code-related questions within the time limit.<br>
-            Keep in mind that incorrect answers will penalize your score/time <br>
-            by ten seconds!
-        </div>
-        <br><br>
-        <div class="timer"> Time Left: <br><span id="time">05:00</span></div>
-        
-    <section id="question-container" class="question-container">
+    <div class="rules">
+        Click the answers to following code-related questions within the time limit.<br>
+        Keep in mind that incorrect answers will penalize your score/time <br>
+        by ten seconds!
+    </div>
+    <br><br>
+    <div class="timer"> Your Score: <br><span id="time">1:00</span></div>
+
+    <div id="container" class="container">
         <button id="startQuiz">Start Quiz</button> 
-        <section class="question-container">
+        <div class="question-container">
             <div id="question"></div>
-            <ol>
-                <li class="answer" id="answer1"></li>
-                <li class="answer" id="answer2"></li>
-                <li class="answer" id="answer3"></li>
-                <li class="answer" id="answer4"></li>
-            </ol>    
+                <ol>
+                    <li class="answer" id="answer1"></li>
+                    <li class="answer" id="answer2"></li>
+                    <li class="answer" id="answer3"></li>
+                    <li class="answer" id="answer4"></li>
+                </ol>    
             <div id="correct"></div>
-        </section>
-    </section>
+        </div>
+    </div>
+
 <script src = "script1.js"></script>
 </body>
 </html>

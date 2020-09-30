@@ -2,6 +2,8 @@ function showQuiz() {
     $("#startQuiz").hide();
     $(".question-container").show();
     setQuestionAndAnswers();
+    startTimer();
+
 }
 function setQuestionAndAnswers() {
     $("#question").text(questions[currentQuestion].question);
@@ -18,32 +20,18 @@ function checkSubmittedAnswer(answerChoice, correctAnswer) {
     return false;
 }
 
-var timer = 0;
-var time = $("#time");
-var secondsLeft = 60
+function startTimer() {
 
-$("#startTimer").click( function () {
-var fiveMinutes = 60 * 5,
-    display = $("#time");
-    startTimer(fiveMinutes, display);
-});
-
-function startTimer(duration, display) {
-    var timer = duration, minutes, seconds;
-    setInterval(function () {
-        minutes = parseInt(timer / 60, 10);
-        seconds = parseInt(timer % 60, 10);
-
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-
-        display.textContent = minutes + ":" + seconds;
-
-        if (--timer < 0) {
-            timer = duration;
+    intervalId = setInterval(function(){  
+        timer--;
+        if (timer >= 0) { 
+            $("#time").text(timer);
         }
     }, 1000);
-}
+}    
+var intervalId;
+var display = $("#time");
+var timer = 60;
 
 var currentQuestion = 0
 $("#startQuiz").on("click", showQuiz);
@@ -59,8 +47,7 @@ var questions = [
         "correct":"alerts"
     }, 
     {
-        "question": 
-        "The condition of an if/else statement is enclosed within a __.", 
+        "question": "The condition of an if/else statement is enclosed within a __.", 
         "answers": [
             "quotes", 
             "curly brackets", 
@@ -70,8 +57,7 @@ var questions = [
         "correct":"curly brackets"
     }, 
     {
-        "question": 
-        "Arrays in Javascript can be used to store __.", 
+        "question": "Arrays in Javascript can be used to store __.", 
         "answers": [
             "numbers", 
             "other arrays", 
@@ -81,8 +67,7 @@ var questions = [
         "correct":"numbers"
     }, 
     {
-        "question": 
-        "String values must be enclosed within __ when being assigned to variables.", 
+        "question": "String values must be enclosed within __ when being assigned to variables.", 
         "answers": [
             "commas", 
             "curly brackets", 
@@ -92,8 +77,7 @@ var questions = [
         "correct":"quotes"
     },
     {
-        "question": 
-        "A very useful tool used during development and debugging for printing content to the debugger is:",
+        "question": "A very useful tool used during development and debugging for printing content to the debugger is:",
         "answers":[
             "Javascript",
             "terminal/bash",
@@ -106,18 +90,20 @@ var questions = [
     
 $(".answer").click(function() {
     var answerThatWasClicked = $(this).text();
-    var isCorrect = checkSubmittedAnswer(answerThatWasClicked, questions[currentQuestion].correct) 
+    var isCorrect = checkSubmittedAnswer(answerThatWasClicked, questions[currentQuestion].correct);
     if (isCorrect) {
         $("#correct").text("Correct!");
     } else {
         $("#correct").text("Incorrect!");
+        timer = timer - 10;
+        $("#time").text(timer);
     }
     currentQuestion++;
     if (currentQuestion < questions.length) {
         setQuestionAndAnswers();
     }
     else {
-        //Quiz Over
+        $("#container").hide();
+        clearInterval(intervalId);
     }
-
 });
