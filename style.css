@@ -1,0 +1,35 @@
+  .question-container {
+    text-align: center;
+    background-color: rgb(170, 170, 170);
+    padding: 50px;
+  }
+  body {
+    background-color: rgb(100, 100, 100);
+  }
+  h1 {
+    text-align: center;
+    color: white;
+    text-decoration: underline;
+    text-decoration-color: rgb(170, 170, 170);
+  }
+  button {
+    background-color:green;
+    color: white;
+    padding: 30px 60px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+  }
+  .rules {
+    text-align: center;
+    color: white;
+    text-decoration: underline;
+  }
+  li {
+    list-style-position: inside;
+    padding: 10px;
+  }
+  .timer {
+    text-align: center;
+    color: white;
+  }
